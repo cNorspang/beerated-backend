@@ -1,0 +1,12 @@
+[package]
+name = "beerated-backend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rocket = {version = "0.5.0-rc.2", features = ["tls", "json"]}
+serde = "1.0.136"
+sqlx = {version = "0.5.10", features = ["postgres", "runtime-actix-rustls", "macros", "json"]}
+pwhash = "1"
