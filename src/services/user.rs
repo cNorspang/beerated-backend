@@ -6,7 +6,7 @@ use pwhash::bcrypt;
 
 pub async fn get_user_by_id(user_id: i32) -> User {
 
-    let pool = PgPool::connect("postgresql://rollo:1234@192.168.0.115:5432/beerated?sslmode=disable").await.unwrap();
+    let pool = PgPool::connect("postgresql://rollo:1234@192.168.0.115:3011/beerated?sslmode=disable").await.unwrap();
 
     let id = user_id;
     
@@ -33,7 +33,7 @@ pub async fn create_user(user: Json<User>) -> i32 {
     let password = bcrypt::hash(user.password.clone().unwrap()).unwrap();
 
 
-    let pool = PgPool::connect("postgresql://rollo:1234@192.168.0.115:5432/beerated?sslmode=disable").await.unwrap();
+    let pool = PgPool::connect("postgresql://rollo:1234@192.168.0.115:3011/beerated?sslmode=disable").await.unwrap();
 
     let sql_string = "INSERT INTO users (username, password, email) VALUES ($1, $2, $3) RETURNING user_id";
 
@@ -52,11 +52,12 @@ pub async fn create_user(user: Json<User>) -> i32 {
 pub async fn login_user(user: Json<UserLogin>) -> i32 {
     let email = user.email.clone();
     let password = bcrypt::hash(user.password.clone()).unwrap();
+    println!("{}", password);
 
     // Fix connection string
-    let pool = PgPool::connect("postgres://rollo:ll@192.168.0.115:5432/beerated").await.unwrap();
+    let pool = PgPool::connect("postgresql://rollo:1234@192.168.0.115:3011/beerated?sslmode=disable").await.unwrap();
 
-    let sql_string = "SELECT * FROM users WHERE email = $1 AND password = $2 RETURNING user_id";
+    let sql_string = "SELECT * FROM users WHERE email = $1 AND password = $2";
 
     let row = sqlx::query(sql_string)
         .bind(email)
