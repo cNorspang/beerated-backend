@@ -12,5 +12,6 @@ steps:
     image: plugins/docker
     settings:
       username: admin
-      password: $REGISTRY_PASS
+      password: 
+        from_secret: REGISTRY_PASS
       repo: http://harbor.norspang.dk/beerated-backend
