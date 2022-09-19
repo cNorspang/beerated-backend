@@ -16,3 +16,4 @@ steps:
         from_secret: REGISTRY_PASS
       registry: http://harbor.norspang.dk
       repo: http://harbor.norspang.dk/beerated-backend
+      insecure: true
