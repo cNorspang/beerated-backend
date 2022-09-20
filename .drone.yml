@@ -6,12 +6,12 @@ steps:
   - name: build
     image: rust
     commands:
-      - cargo build
-      - cargo test
+    - cargo build
+    - cargo test
   - name: publish
     image: plugins/docker
     settings:
       username: Norspang
       password: 
         from_secret: REGISTRY_PASS
-      registry: norspang/beerated-backend
+      repo: norspang/beerated-backend
