@@ -13,7 +13,8 @@ steps:
     environment:
       PASSWORD:
         from_secret: REGISTRY_PASS
-    settings:
-      username: norspang
-      password: $PASSWORD
-      repo: norspang/beerated-backend
+    dry_run: true
+          #settings:
+          #username: norspang
+          #password: $PASSWORD
+    repo: norspang/beerated-backend
