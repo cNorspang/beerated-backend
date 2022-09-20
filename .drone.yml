@@ -14,5 +14,4 @@ steps:
       username: admin
       password: 
         from_secret: REGISTRY_PASS
-      registry: https://harbor.norspang.dk
-      repo: https://harbor.norspang.dk/beerated-backend
+      registry: norspang/beerated-backend
