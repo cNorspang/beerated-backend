@@ -13,8 +13,6 @@ steps:
     environment:
       PASSWORD:
         from_secret: REGISTRY_PASS
-    commands:
-      - echo $PASSWORD
     settings:
       username: norspang
       password: $PASSWORD
