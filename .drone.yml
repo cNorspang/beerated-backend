@@ -11,7 +11,7 @@ steps:
   - name: publish
     image: plugins/docker
     settings:
-      username: admin
+      username: Norspang
       password: 
         from_secret: REGISTRY_PASS
       registry: norspang/beerated-backend
