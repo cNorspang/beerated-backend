@@ -10,8 +10,12 @@ steps:
     - cargo test
   - name: publish
     image: plugins/docker
-    settings:
-      username: Norspang
-      password: 
+    environment:
+      PASSWORD:
         from_secret: REGISTRY_PASS
+    commands:
+      - echo $PASSWORD
+    settings:
+      username: norspang
+      password: $PASSWORD
       repo: norspang/beerated-backend
