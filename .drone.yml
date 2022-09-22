@@ -8,13 +8,15 @@ steps:
     commands:
     - cargo build
     - cargo test
+
+
   - name: publish
     image: plugins/docker
     settings:
       username: norspang
       password:
         from_secret: REGISTRY_PASS
-    repo: norspang/beerated-backend
-    tags: 
-      - latest-dev
-      - latest
+      repo: norspang/beerated-backend
+      tags: 
+        - latest-dev
+        - latest
