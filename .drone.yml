@@ -14,4 +14,5 @@ steps:
       username: norspang
       password:
         from_secret: REGISTRY_PASS
-    repo: norspang/beerated-backend:lastest-dev
+    repo: norspang/beerated-backend
+    tags: latest-dev
