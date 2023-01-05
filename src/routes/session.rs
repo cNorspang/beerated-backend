@@ -1,9 +1,9 @@
-use rocket::serde::json::{Json};
-use rocket::serde::{Serialize, Deserialize};
+use rocket::serde::json::Json;
+use rocket::serde::{Deserialize, Serialize};
 
 use crate::services;
 
-#[derive(Debug,Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(crate = "rocket::serde")]
 pub struct Session {
     pub session_id: u32,

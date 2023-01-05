@@ -1,16 +1,17 @@
-#[macro_use] extern crate rocket;
-
+#[macro_use]
+extern crate rocket;
 
 mod routes;
 mod services;
 
-use routes::user::get_user_by_id;
-use routes::user::create_user;
-use routes::user::login_user;
+use dotenv::dotenv;
 
-use routes::beer::get_beer_by_id;
+use routes::user;
+
+use routes::beer;
 
 use routes::session::get_session_by_id;
+
 
 #[get("/")]
 fn index() -> &'static str {
@@ -19,9 +20,15 @@ fn index() -> &'static str {
 
 #[launch]
 fn rocket() -> _ {
+    dotenv().ok();
     rocket::build()
         .mount("/api", routes![index])
-        .mount("/api/beers", routes![get_beer_by_id])
-        .mount("/api/users", routes![get_user_by_id, create_user, login_user])
+        .mount(
+            "/api/beers", 
+            routes![beer::get_beer_by_id,beer::get_beers_submitting_user_id])
+        .mount(
+            "/api/users",
+            routes![user::get_user_by_id, user::create_user, user::login_user],
+        )
         .mount("/api/sessions", routes![get_session_by_id])
 }
